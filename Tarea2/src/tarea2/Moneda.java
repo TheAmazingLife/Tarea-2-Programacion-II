@@ -1,30 +1,65 @@
 package tarea2;
 
 abstract class Moneda {
-
-    private int serie;
     protected int valor;
 
-    public Moneda(int serie) {
-        this.serie = serie;
+    public Moneda(int valor) {
+        this.valor = valor;
     }
 
-    public int getSerie() {
-        return serie;
+    public String getSerie(Moneda obj) {
+        return "Nro de serie" + obj;
     }
 
     public String toString() {
-        return "Valor de la moneda: " + serie;
+        return "Valor de la moneda: " + valor;
     }
+
+    public abstract int getValor();
 }
 
 class Moneda1500 extends Moneda {
-    public Moneda1500(int serie){
-       super(serie);
-       valor = 1500;
+    public Moneda1500() {
+        super(1500);
     }
-    
-    public String getValor() {
-        return "Valor: " + valor;
+
+    public int getValor() {
+        return valor;
     }
 }
+
+class Moneda1000 extends Moneda {
+    public Moneda1000() {
+        super(1000);
+    }
+
+    public int getValor() {
+        return valor;
+    }
+}
+
+class Moneda500 extends Moneda {
+    public Moneda500() {
+        super(500);
+    }
+
+    public int getValor() {
+        return valor;
+    }
+}
+
+class Moneda100 extends Moneda {
+    public Moneda100() {
+        super(100);
+    }
+
+    public int getValor() {
+        return valor;
+    }
+}
+
+/*
+ * Features:
+ * Creacion de subclase Moneda1500, Moneda1000, Moneda500, Moneda100
+ * Asignar direccion en memoria ram a serie y metodo getSerie();
+ */
