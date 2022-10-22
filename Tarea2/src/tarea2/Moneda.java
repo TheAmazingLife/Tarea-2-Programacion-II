@@ -8,7 +8,6 @@ abstract class Moneda {
     }
 
     public String getSerie(Moneda obj) {
-        //System.out.println(obj.getClass().getSimpleName());
         return "Nro de serie" + obj;
     }
 
@@ -63,6 +62,4 @@ class Moneda100 extends Moneda {
  * Features:
  * Creacion de subclase Moneda1500, Moneda1000, Moneda500, Moneda100
  * Asignar direccion en memoria ram a serie y metodo getSerie();
- * Pendiente:
- * Serie un atributo?
  */
