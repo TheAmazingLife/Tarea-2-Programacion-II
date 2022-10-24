@@ -1,5 +1,10 @@
 package tarea2;
 
+// abstract de la clase `Bebida`
+// Metodos
+// - getSerie() retorna el numero de serie de la bebida
+// - beber() retorna el sabor de la bebida bebida
+
 abstract class Bebida {
 
     private int serie;
@@ -12,8 +17,7 @@ abstract class Bebida {
         return serie;
     }
 
-    public String beber() {
-        return "sabor: ";
+    public abstract String beber(); {
     }
 }
 
@@ -24,7 +28,7 @@ class Sprite extends Bebida {
     }
 
     public String beber() {
-        return super.beber() + "sprite";
+        return  "sprite";
     }
 }
 
@@ -35,7 +39,7 @@ class CocaCola extends Bebida {
     }
 
     public String beber() {
-        return super.beber() + "cocacola";
+        return "cocacola";
     }
 }
 
@@ -46,7 +50,7 @@ class Fanta extends Bebida {
     }
 
     public String beber() {
-        return super.beber() + "fanta";
+        return "fanta";
     }
 }
 
