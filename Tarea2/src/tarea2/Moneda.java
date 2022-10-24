@@ -1,6 +1,7 @@
 package tarea2;
 
 abstract class Moneda {
+
     protected int valor;
 
     public Moneda(int valor) {
@@ -19,6 +20,7 @@ abstract class Moneda {
 }
 
 class Moneda1500 extends Moneda {
+
     public Moneda1500() {
         super(1500);
     }
@@ -29,6 +31,7 @@ class Moneda1500 extends Moneda {
 }
 
 class Moneda1000 extends Moneda {
+
     public Moneda1000() {
         super(1000);
     }
@@ -39,6 +42,7 @@ class Moneda1000 extends Moneda {
 }
 
 class Moneda500 extends Moneda {
+
     public Moneda500() {
         super(500);
     }
@@ -49,6 +53,7 @@ class Moneda500 extends Moneda {
 }
 
 class Moneda100 extends Moneda {
+
     public Moneda100() {
         super(100);
     }

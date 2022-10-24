@@ -2,22 +2,47 @@ package tarea2;
 
 public class Comprador {
 
-    protected Moneda moneda;
-    protected int cualBebida;
-    protected Expendedor exp;
+    protected Moneda dineroTotal;
+    protected int tipo;
+    protected Expendedor expendedor;
 
-    public Comprador(Moneda moneda, int cualBebida, Expendedor exp) {
-        this.moneda = moneda;
-        this.cualBebida = cualBebida;
-        this.exp = exp;
+    public Comprador(Moneda dineroTotal, int tipo, Expendedor expendedor) {
+        this.dineroTotal = dineroTotal;
+        this.tipo = tipo;
+        this.expendedor = expendedor;
     }
 
-    public int cuantoVuelto() {
-       
-        
+    public Bebida comprarBebida(int tipo) {
+        Bebida bebida = null;
+        if (dineroTotal.valor >= expendedor.getPrecioBebidas()) {
+            switch (tipo) {
+                case 1:
+                    bebida = expendedor.getBebida(1);
+                    return bebida;
+                case 2:
+                    bebida = expendedor.getBebida(2);
+                    return bebida;
+                case 3:
+                    bebida = expendedor.getBebida(3);
+                    return bebida;
+            }
+
+            int vuelto = dineroTotal.valor - expendedor.getPrecioBebidas();
+            for (int i = 0; i < vuelto / 100; i++) {
+                expendedor.addVuelto();
+            }
+        }
+        return null;
     }
 
-    public String queBebiste() { //el sonido de la Bebida: cocacola, sprite, fanta
+    public Moneda getVuelto() {
+        if (dineroTotal.valor >= expendedor.getPrecioBebidas()) {
+            return expendedor.getVuelto();
+        } else {
+            return null;
+        }
+    }
 
+    public String queBebiste() {
     }
 }

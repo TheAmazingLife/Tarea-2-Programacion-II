@@ -12,7 +12,7 @@ abstract class Bebida {
         return serie;
     }
 
-    public String beber() {
+    public String sabor() {
         return "sabor: ";
     }
 }
@@ -23,8 +23,8 @@ class Sprite extends Bebida {
         super(serie);
     }
 
-    public String beber() {
-        return super.beber() + "sprite";
+    public String sabor() {
+        return super.sabor() + "sprite";
     }
 }
 
@@ -34,8 +34,8 @@ class CocaCola extends Bebida {
         super(serie);
     }
 
-    public String beber() {
-        return super.beber() + "cocacola";
+    public String sabor() {
+        return super.sabor() + "cocacola";
     }
 }
 
@@ -45,8 +45,8 @@ class Fanta extends Bebida {
         super(serie);
     }
 
-    public String beber() {
-        return super.beber() + "fanta";
+    public String sabor() {
+        return super.sabor() + "fanta";
     }
 }
 
