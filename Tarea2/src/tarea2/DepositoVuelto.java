@@ -10,8 +10,7 @@ public class DepositoVuelto {
         deposito = new ArrayList();
     }
 
-    public void add() {
-        Moneda vuelto = new Moneda100();
+    public void add(Moneda vuelto) {
         deposito.add(vuelto);
     }
 
