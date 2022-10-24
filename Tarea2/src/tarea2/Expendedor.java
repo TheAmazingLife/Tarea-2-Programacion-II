@@ -5,6 +5,7 @@ class Expendedor {
     private DepositoBebida cocacola;
     private DepositoBebida sprite;
     private DepositoBebida fanta;
+    private int precioBebidas;
 
     public Expendedor(int numBebidas, int precioBebidas) {
         cocacola = new DepositoBebida();
@@ -21,22 +22,25 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda m, int cual) {
-        if (m > precioBebidas()) {
-        
-        }
+    public Bebida comprarBebida(Moneda moneda, int cual) {
         Bebida bebida = null;
-        switch (cual) {
-            case 1:
-                bebida = cocacola.getBebida();
-                return bebida;
-            case 2:
-                bebida = sprite.getBebida();
-                return bebida;
-            case 3:
-                bebida = fanta.getBebida();
-                return bebida;
+        if (moneda.valor >= precioBebidas) {
+            switch (cual) {
+                case 1:
+                    bebida = cocacola.getBebida();
+                    return bebida;
+                case 2:
+                    bebida = sprite.getBebida();
+                    return bebida;
+                case 3:
+                    bebida = fanta.getBebida();
+                    return bebida;
+            }
         }
         return null;
+    }
+    
+    public int getPrecioBebidas(){
+        return precioBebidas;
     }
 }
