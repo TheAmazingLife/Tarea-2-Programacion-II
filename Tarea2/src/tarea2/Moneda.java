@@ -3,65 +3,72 @@ package tarea2;
 // abstract de la Clase `Moneda`:
 // Metodos:
 // - getSerie() devuelve el numero de serie en valor de ubicacion en memoria ram
-// - toString() imprime el valor de la moneda
+// - toString() imprime el valor de la moneda y la direccion de memoria ram
 // - getValor() devuelve el valor de la moneda en int.
 
 abstract class Moneda {
-    //ARREGLAR las monedas  no tienen propiedades, no las necesitan, el valor puede ser retornando directamente el número
-    protected int valor;
 
-    public Moneda(int valor) {
-        this.valor = valor;
+    public Moneda() {
     }
 
-    public String getSerie(Moneda obj) { //retorna su dirección en RAM como número de serie
-        return "" + obj;
+    public String getSerie() { // retorna su dirección en RAM como número de serie
+        return "" + this.hashCode();
     }
 
-    public String toString(Moneda obj) { //imprime el valor de la moneda
-        return "Valor de la moneda: " + valor + " Nro de serie :" + obj;
-    }
+    public abstract String toString(); // imprime el valor de la moneda
 
-    public abstract int getValor(); //retorna la cantidad que vale la moneda
+    public abstract int getValor(); // retorna la cantidad que vale la moneda
 }
 
 class Moneda1500 extends Moneda {
-    public Moneda1500() { //posible correccion eliminar el constructor
-        super(1500);
+    public Moneda1500() {
     }
 
-    public int getValor() { // retornar solamnete el numero
-        return valor;
+    public String toString() {
+        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
+    }
+
+    public int getValor() {
+        return 1500;
     }
 }
 
 class Moneda1000 extends Moneda {
     public Moneda1000() {
-        super(1000);
+    }
+
+    public String toString() {
+        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
-        return valor;
+        return 1000;
     }
 }
 
 class Moneda500 extends Moneda {
     public Moneda500() {
-        super(500);
+    }
+
+    public String toString() {
+        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
-        return valor;
+        return 500;
     }
 }
 
 class Moneda100 extends Moneda {
     public Moneda100() {
-        super(100);
+    }
+
+    public String toString() {
+        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
-        return valor;
+        return 100;
     }
 }
 
@@ -69,4 +76,9 @@ class Moneda100 extends Moneda {
  * Features:
  * Creacion de subclase Moneda1500, Moneda1000, Moneda500, Moneda100
  * Asignar direccion en memoria ram a serie y metodo getSerie();
+ * 
+ * Las monedas no tienen propiedades, no las necesitan, el valor puede ser retornando directamente el número
+ * Eliminacion del constructor y valor como atributo, getValor() retorna su valor en int
+ * Metodo toString devuelve la serie y el valor en un String
+ * Metodo getValor solamente retorna en numero
  */
