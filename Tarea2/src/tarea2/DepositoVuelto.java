@@ -7,7 +7,7 @@ public class DepositoVuelto {
     private ArrayList<Moneda> deposito;
 
     public DepositoVuelto() {
-        deposito = new ArrayList();
+        deposito = new ArrayList<Moneda>();
     }
 
     public void add(Moneda vuelto) {

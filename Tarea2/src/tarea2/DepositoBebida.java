@@ -7,7 +7,7 @@ public class DepositoBebida {
     private ArrayList<Bebida> deposito;
 
     public DepositoBebida() {
-        deposito = new ArrayList();
+        deposito = new ArrayList<Bebida>();
     }
 
     public void addBebida(Bebida bebida) {
