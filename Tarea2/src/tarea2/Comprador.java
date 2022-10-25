@@ -8,17 +8,17 @@ package tarea2;
 public class Comprador {
     //[c] no almacenar monedas ni bebida como propiedad
     // las propiedades son un string y un entero, los valores se devuelven cuando se pidan
-    protected Moneda moneda;
+    /* protected Moneda moneda;
     protected int cualBebida;
-    protected Expendedor exp;
+    protected Expendedor exp; */
 
     protected int vuelto;
     protected String sabor;
 
     public Comprador(Moneda moneda, int cualBebida, Expendedor exp) {
-        this.moneda = moneda;
+        /* this.moneda = moneda;
         this.cualBebida = cualBebida;
-        this.exp = exp;
+        this.exp = exp; */
         this.vuelto = 0; //debemos devolverlo como un entero una en una
         Bebida tempBebida = exp.comprarBebida(moneda, cualBebida);
         if(tempBebida != null){
@@ -26,14 +26,13 @@ public class Comprador {
         } else {
             sabor = null;
         }
+        Moneda tempMoneda = exp.getVuelto();;
+        while (tempMoneda != null) {
+            vuelto += tempMoneda.getValor();
+            tempMoneda = exp.getVuelto();
+        }
     }
-    //metodo dudoso(?) se puede skipear el retorno moneda con un void y solo asignando el valor
-    public Moneda getVuelto(Expendedor exp) {
-        Moneda tempMoneda = exp.getVuelto();
-        vuelto += tempMoneda.getValor(); //expendedor devuelve moneda a la que se le pide el valor y se suma al vuelto int
-        return tempMoneda;
-    }
-
+    
     public int cuantoVuelto() { // de vuelto
         return vuelto;
     }
@@ -42,3 +41,8 @@ public class Comprador {
         return sabor;
     }
 }
+
+/* 
+ * El retorno moneda con un void y solo asignando el valor
+ * addVuelto 
+ */

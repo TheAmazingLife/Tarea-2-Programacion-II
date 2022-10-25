@@ -16,7 +16,8 @@ class Expendedor {
         cocacola = new DepositoBebida();
         sprite = new DepositoBebida();
         fanta = new DepositoBebida();
-        vueltoTotal = null;
+        vueltoTotal = new DepositoVuelto();
+        this.precioBebidas = precioBebidas;
 
         for (int i = 0; i < numBebidas; i++) {
             Bebida cocacola = new CocaCola(100 + i);
@@ -30,31 +31,47 @@ class Expendedor {
 
     public Bebida comprarBebida(Moneda moneda, int cual) {
         Bebida bebida = null;
-        if(moneda == null) {
-            //PagoIncorrectoException
+        if (moneda == null) {
+            // PagoIncorrectoException
         } else {
             if (moneda.getValor() >= precioBebidas) {
-                //en caso de no haber bebidas, numero erroneo NoHayBebidaException y devuelve la moneda al deposito
-                switch (cual) { //vuelto es la moneda a devolver falta definirla
+                // en caso de |no haber bebidas|, numero erroneo NoHayBebidaException y devuelve
+                // la moneda al deposito
+                switch (cual) { // vuelto es la moneda a devolver falta definirla
                     case 1:
                         bebida = cocacola.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            return null;
+                        }
                     case 2:
                         bebida = sprite.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            return null;
+                        }
                     case 3:
                         bebida = fanta.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            return null;
+                        }
                     default:
+                        // imprimir excepcion
                         vueltoTotal.add(moneda);
-                        //imprimir excepcion
                         return null;
                 }
             } else if (moneda.getValor() < precioBebidas) {
-                //PagoInsuficienteException
+                // PagoInsuficienteException
             }
         }
         return null;
@@ -67,16 +84,17 @@ class Expendedor {
             vueltoTotal.add(monedaVuelto);
         }
     }
-    
-    public Moneda getVuelto(){ //torna moneda, null si deposito está vacío
+
+    public Moneda getVuelto() { // torna moneda, null si deposito está vacío
         return vueltoTotal.getVuelto(); // se rescatan una a una
     }
 
-    public int getPrecioBebidas(){
+    public int getPrecioBebidas() {
         return precioBebidas;
     }
 }
-/* 
+/*
  * Features:
- * Metodo calcularVuelto() entregando como parametro la moneda.getValor convierte y deposita en monedas de 100 en el deposito
+ * Metodo calcularVuelto() entregando como parametro la moneda.getValor
+ * convierte y deposita en monedas de 100 en el deposito
  */
