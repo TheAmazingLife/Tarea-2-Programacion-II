@@ -29,10 +29,11 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda moneda, int cual) {
+    public Bebida comprarBebida(Moneda moneda, int cual) throws PagoIncorrectoException, NoHayBebidaException, PagoInsuficienteException {
         Bebida bebida = null;
         if (moneda == null) {
             // PagoIncorrectoException
+            throw new PagoIncorrectoException("No se puede comprar una bebida sin dinero."/*,  new NullPointerException() */);
         } else {
             if (moneda.getValor() >= precioBebidas) {
                 // en caso de |no haber bebidas|, numero erroneo NoHayBebidaException y devuelve
@@ -45,7 +46,7 @@ class Expendedor {
                             return bebida;
                         } else {
                             vueltoTotal.add(moneda);
-                            return null;
+                            throw new NoHayBebidaException("No hay bebida disponible.");
                         }
                     case 2:
                         bebida = sprite.getBebida();
@@ -54,7 +55,7 @@ class Expendedor {
                             return bebida;
                         } else {
                             vueltoTotal.add(moneda);
-                            return null;
+                            throw new NoHayBebidaException("No hay bebida disponible.");
                         }
                     case 3:
                         bebida = fanta.getBebida();
@@ -63,15 +64,14 @@ class Expendedor {
                             return bebida;
                         } else {
                             vueltoTotal.add(moneda);
-                            return null;
+                            throw new NoHayBebidaException("No hay bebida disponible.");
                         }
                     default:
-                        // imprimir excepcion
                         vueltoTotal.add(moneda);
-                        return null;
+                        throw new NoHayBebidaException("No hay bebida disponible.");
                 }
             } else if (moneda.getValor() < precioBebidas) {
-                // PagoInsuficienteException
+                throw new PagoIncorrectoException("Saldo insuficiente.");
             }
         }
         return null;
