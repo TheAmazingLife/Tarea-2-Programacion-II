@@ -21,7 +21,7 @@ plata le devolvió expendedor
 
 ## Grafico UML
 
-![UML](Recursos/Screenshot%202022-10-20%20at%2010-59-36%20Tarea%202%20Progra%20II.vpd.pdf.png)
+![UML](Recursos/GraficoUMLv2.png)
 
 ## Autores
 
