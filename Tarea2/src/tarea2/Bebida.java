@@ -36,8 +36,7 @@ class CocaCola extends Bebida {
 
     public CocaCola(int serie) {
         super(serie);
-    }
-
+    }+operation()
     public String beber() {
         return "cocacola";
     }

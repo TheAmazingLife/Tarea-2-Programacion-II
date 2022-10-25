@@ -12,20 +12,17 @@ abstract class Moneda {
     }
 
     public String getSerie() { // retorna su dirección en RAM como número de serie
-        return "" + this.hashCode();
+        return this.hashCode().toString();
     }
 
-    public abstract String toString(); // imprime el valor de la moneda
+    public abstract String toString(){ // imprime el valor de la moneda
+        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
+    } 
 
     public abstract int getValor(); // retorna la cantidad que vale la moneda
 }
-
 class Moneda1500 extends Moneda {
     public Moneda1500() {
-    }
-
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
@@ -37,10 +34,6 @@ class Moneda1000 extends Moneda {
     public Moneda1000() {
     }
 
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
-    }
-
     public int getValor() {
         return 1000;
     }
@@ -50,10 +43,6 @@ class Moneda500 extends Moneda {
     public Moneda500() {
     }
 
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
-    }
-
     public int getValor() {
         return 500;
     }
@@ -61,10 +50,6 @@ class Moneda500 extends Moneda {
 
 class Moneda100 extends Moneda {
     public Moneda100() {
-    }
-
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {

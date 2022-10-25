@@ -18,9 +18,9 @@ public class Comprador {
     public Comprador(Moneda moneda, int cualBebida, Expendedor exp) {
         /* this.moneda = moneda;
         this.cualBebida = cualBebida;
-        this.exp = exp; */
-        this.vuelto = 0; //debemos devolverlo como un entero una en una
-        Bebida tempBebida = exp.comprarBebida(moneda, cualBebida);
+        this.exp = exp; */ 
+        this.vuelto = 0; //debemos devolvcomo un entero una en una
+        Bebida tempBebida = exp.comprarBebida(moneda,  cualBebida);
         if(tempBebida != null){
             sabor = tempBebida.beber();
         } else {
@@ -30,7 +30,7 @@ public class Comprador {
         while (tempMoneda != null) {
             vuelto += tempMoneda.getValor();
             tempMoneda = exp.getVuelto();
-        }
+        } 
     }
     
     public int cuantoVuelto() { // de vuelto
