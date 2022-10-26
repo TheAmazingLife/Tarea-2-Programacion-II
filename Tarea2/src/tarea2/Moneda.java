@@ -12,20 +12,18 @@ abstract class Moneda {
     }
 
     public String getSerie() { // retorna su dirección en RAM como número de serie
-        return "" + this.hashCode();
+        return this.hashCode().toString();
     }
 
-    public abstract String toString(); // imprime el valor de la moneda
+    public abstract String toString(){
+        return "Valor de la moneda " + getValor() + " Nro. de serie:" + getSerie();
+    }
 
     public abstract int getValor(); // retorna la cantidad que vale la moneda
 }
 
 class Moneda1500 extends Moneda {
     public Moneda1500() {
-    }
-
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
@@ -37,10 +35,6 @@ class Moneda1000 extends Moneda {
     public Moneda1000() {
     }
 
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
-    }
-
     public int getValor() {
         return 1000;
     }
@@ -48,10 +42,6 @@ class Moneda1000 extends Moneda {
 
 class Moneda500 extends Moneda {
     public Moneda500() {
-    }
-
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
     }
 
     public int getValor() {
@@ -63,10 +53,6 @@ class Moneda100 extends Moneda {
     public Moneda100() {
     }
 
-    public String toString() {
-        return "Valor de la moneda: " + getValor() + " Nro de serie :" + getSerie();
-    }
-
     public int getValor() {
         return 100;
     }
@@ -76,6 +62,7 @@ class Moneda100 extends Moneda {
  * Features:
  * Creacion de subclase Moneda1500, Moneda1000, Moneda500, Moneda100
  * Asignar direccion en memoria ram a serie y metodo getSerie();
+ * Modificacion metodo abstracto toString() imprime valor this.hashcode, y serie en definicion de moneda
  * 
  * Las monedas no tienen propiedades, no las necesitan, el valor puede ser retornando directamente el número
  * Eliminacion del constructor y valor como atributo, getValor() retorna su valor en int
