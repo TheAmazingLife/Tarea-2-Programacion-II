@@ -16,7 +16,8 @@ class Expendedor {
         cocacola = new DepositoBebida();
         sprite = new DepositoBebida();
         fanta = new DepositoBebida();
-        vueltoTotal = null;
+        vueltoTotal = new DepositoVuelto();
+        this.precioBebidas = precioBebidas;
 
         for (int i = 0; i < numBebidas; i++) {
             Bebida cocacola = new CocaCola(100 + i);
@@ -28,33 +29,49 @@ class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda moneda, int cual) {
+    public Bebida comprarBebida(Moneda moneda, int cual) throws PagoIncorrectoException, NoHayBebidaException, PagoInsuficienteException {
         Bebida bebida = null;
-        if(moneda == null) {
-            //PagoIncorrectoException
+        if (moneda == null) {
+            // PagoIncorrectoException
+            throw new PagoIncorrectoException("No se puede comprar una bebida sin dinero."/*,  new NullPointerException() */);
         } else {
             if (moneda.getValor() >= precioBebidas) {
-                //en caso de no haber bebidas, numero erroneo NoHayBebidaException y devuelve la moneda al deposito
-                switch (cual) { //vuelto es la moneda a devolver falta definirla
+                // en caso de |no haber bebidas|, numero erroneo NoHayBebidaException y devuelve
+                // la moneda al deposito
+                switch (cual) { // vuelto es la moneda a devolver falta definirla
                     case 1:
                         bebida = cocacola.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            throw new NoHayBebidaException("No hay bebida disponible.");
+                        }
                     case 2:
                         bebida = sprite.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            throw new NoHayBebidaException("No hay bebida disponible.");
+                        }
                     case 3:
                         bebida = fanta.getBebida();
-                        calcularVuelto(moneda);
-                        return bebida;
+                        if (bebida != null) {
+                            calcularVuelto(moneda);
+                            return bebida;
+                        } else {
+                            vueltoTotal.add(moneda);
+                            throw new NoHayBebidaException("No hay bebida disponible.");
+                        }
                     default:
                         vueltoTotal.add(moneda);
-                        //imprimir excepcion
-                        return null;
+                        throw new NoHayBebidaException("No hay bebida disponible.");
                 }
             } else if (moneda.getValor() < precioBebidas) {
-                //PagoInsuficienteException
+                throw new PagoIncorrectoException("Saldo insuficiente.");
             }
         }
         return null;
@@ -67,16 +84,17 @@ class Expendedor {
             vueltoTotal.add(monedaVuelto);
         }
     }
-    
-    public Moneda getVuelto(){ //torna moneda, null si deposito está vacío
+
+    public Moneda getVuelto() { // torna moneda, null si deposito está vacío
         return vueltoTotal.getVuelto(); // se rescatan una a una
     }
 
-    public int getPrecioBebidas(){
+    public int getPrecioBebidas() {
         return precioBebidas;
     }
 }
-/* 
+/*
  * Features:
- * Metodo calcularVuelto() entregando como parametro la moneda.getValor convierte y deposita en monedas de 100 en el deposito
+ * Metodo calcularVuelto() entregando como parametro la moneda.getValor
+ * convierte y deposita en monedas de 100 en el deposito
  */

@@ -53,20 +53,3 @@ class Fanta extends Bebida {
         return "fanta";
     }
 }
-
-/*
-Bebida bebida = null;
-switch (key) {
-    case 1:
-        bebida = new Sprite(1111);
-        break;
-    case 2:
-        bebida = new CocaCola(2222);
-        break;
-    case 3:
-        bebida = new Fanta(3333);
-        break
-    default:
-        break;
-}
- */
