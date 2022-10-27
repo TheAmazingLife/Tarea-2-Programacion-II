@@ -1,6 +1,10 @@
 package tarea2;
 
-// abstract de la Clase `Moneda`:
+// Resumen
+// clase abstracta `Moneda` extiende Moneda100, Moneda500, Moneda1000, Moneda1500
+// Constructor Moneda()
+// Atributos
+// Las monedas no tienen propiedades, no las necesitan
 // Metodos:
 // - getSerie() devuelve el numero de serie en valor de ubicacion en memoria ram
 // - toString() imprime el valor de la moneda y la direccion de memoria ram
@@ -12,11 +16,11 @@ abstract class Moneda {
     }
 
     public String getSerie() { // retorna su dirección en RAM como número de serie
-        return this.hashCode().toString();
+        return "" + this.hashCode();
     }
 
-    public abstract String toString(){
-        return "Valor de la moneda " + getValor() + " Nro. de serie:" + getSerie();
+    public String toString() { // imprime el valor de la moneda y la direccion de memoria ram
+        return "Valor de la moneda " + getValor() + " Nro. de serie: " + getSerie();
     }
 
     public abstract int getValor(); // retorna la cantidad que vale la moneda
@@ -57,15 +61,3 @@ class Moneda100 extends Moneda {
         return 100;
     }
 }
-
-/*
- * Features:
- * Creacion de subclase Moneda1500, Moneda1000, Moneda500, Moneda100
- * Asignar direccion en memoria ram a serie y metodo getSerie();
- * Modificacion metodo abstracto toString() imprime valor this.hashcode, y serie en definicion de moneda
- * 
- * Las monedas no tienen propiedades, no las necesitan, el valor puede ser retornando directamente el número
- * Eliminacion del constructor y valor como atributo, getValor() retorna su valor en int
- * Metodo toString devuelve la serie y el valor en un String
- * Metodo getValor solamente retorna en numero
- */
