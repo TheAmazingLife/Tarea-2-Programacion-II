@@ -1,9 +1,13 @@
 package tarea2;
 
-// abstract de la clase `Bebida`
+// Resumen
+// clase abstracta `Bebida` extiende Sprite, CocaCola, Fanta
+// constructores Sprite(int serie), CocaCola(int serie), Fanta(int serie)
+// Atributos
+// - int serie 
 // Metodos
 // - getSerie() retorna el numero de serie de la bebida
-// - beber() retorna el sabor de la bebida bebida
+// - beber() abstracto retorna el sabor de la bebida
 
 abstract class Bebida {
 
@@ -13,23 +17,11 @@ abstract class Bebida {
         this.serie = serie;
     }
 
-    public int getSerie() {
+    public int getSerie() { // retorna el numero de serie de la bebida
         return serie;
     }
 
-    public abstract String beber(); {
-    }
-}
-
-class Sprite extends Bebida {
-
-    public Sprite(int serie) {
-        super(serie);
-    }
-
-    public String beber() {
-        return  "sprite";
-    }
+    public abstract String beber(); // retorna el sabor de la bebida
 }
 
 class CocaCola extends Bebida {
@@ -40,6 +32,17 @@ class CocaCola extends Bebida {
 
     public String beber() {
         return "cocacola";
+    }
+}
+
+class Sprite extends Bebida {
+
+    public Sprite(int serie) {
+        super(serie);
+    }
+
+    public String beber() {
+        return "sprite";
     }
 }
 

@@ -1,5 +1,13 @@
 package tarea2;
 
+// Resumen
+// clase `DepositoVuelto`
+// Constructor DepositoVuelto()
+// Atributos
+// - ArrayList<Moneda> deposito
+// Metodos:
+// - add(Moneda vuelto) agrega moneda al ArrayList<Moneda> deposito
+// - getVuelto() devuelve una moneda en caso de que hayan en el deposito, en caso contrario retorna `null`
 import java.util.ArrayList;
 
 public class DepositoVuelto {
