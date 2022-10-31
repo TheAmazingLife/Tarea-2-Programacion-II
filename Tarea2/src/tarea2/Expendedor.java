@@ -74,11 +74,11 @@ class Expendedor {
                         vueltoTotal.add(moneda);
                         throw new NoHayBebidaException("No hay bebida disponible."); // NoHayBebidaException
                 }
-            } else if (moneda.getValor() < precioBebidas) {
+            } else {
+                vueltoTotal.add(moneda);
                 throw new PagoIncorrectoException("Saldo insuficiente."); // PagoInsuficienteException
             }
         }
-        return null;
     }
 
     public void calcularVuelto(Moneda moneda) { // calcula vuelto y lo devuelve al DepositoVuelto vueltoTotal en monedas de 100

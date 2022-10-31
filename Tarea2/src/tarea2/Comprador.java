@@ -11,8 +11,8 @@ package tarea2;
 // - queBebiste() devuelve el sonido de la bebida
 
 public class Comprador {
-    protected int vuelto;
-    protected String sabor;
+    private int vuelto;
+    private String sabor;
 
     public Comprador(Moneda moneda, int cualBebida, Expendedor exp) {
         this.vuelto = 0;
