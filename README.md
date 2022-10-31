@@ -2,7 +2,7 @@
 
 Repositorio Tareas N°2 de la asignatura Programacion 2 S2-22 de la carrera Ingenieria Civil Informatica de la Universidad de Concepcion.
 
->Fecha de entrega **27 de octubre hasta las 23:59.**
+>Fecha de entrega **30 de octubre hasta las 23:59.**
 
 <!-- agregar fotos del UML -->
 ## Enunciado
@@ -21,7 +21,8 @@ plata le devolvió expendedor
 
 ## Grafico UML
 
-![UML](Recursos/GraficoUMLv3.png)
+
+![UML](Recursos\GraficoUML.png)
 
 ## Autores
 

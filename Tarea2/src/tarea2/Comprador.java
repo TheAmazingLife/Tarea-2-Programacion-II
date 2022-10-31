@@ -1,48 +1,44 @@
 package tarea2;
 
-// abstract de la Clase `Moneda`:
+// Resumen
+// clase `Comprador`
+// Constructor Comprador(Moneda moneda, int cualBebida, Expendedor exp)
+// Atributos
+// - int vuelto
+// - String sabor
 // Metodos:
 // - cuantoVuelto() devuelve el vuelto
 // - queBebiste() devuelve el sonido de la bebida
 
 public class Comprador {
-    //[c] no almacenar monedas ni bebida como propiedad
-    // las propiedades son un string y un entero, los valores se devuelven cuando se pidan
-    /* protected Moneda moneda;
-    protected int cualBebida;
-    protected Expendedor exp; */
-
-    protected int vuelto;
-    protected String sabor;
+    private int vuelto;
+    private String sabor;
 
     public Comprador(Moneda moneda, int cualBebida, Expendedor exp) {
-        /* this.moneda = moneda;
-        this.cualBebida = cualBebida;
-        this.exp = exp; */
-        this.vuelto = 0; //debemos devolverlo como un entero una en una
-        Bebida tempBebida = exp.comprarBebida(moneda, cualBebida);
-        if(tempBebida != null){
+        this.vuelto = 0;
+        Bebida tempBebida; // Bebida temporal
+        try {
+            // Intenta comprar la bebida e imprime si se realizo con exito
+            tempBebida = exp.comprarBebida(moneda, cualBebida);
             sabor = tempBebida.beber();
-        } else {
+            System.out.println("Compra Realizada con exito.");
+        } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayBebidaException e) {
+            // En caso de que no se concrete la compra se deja el sabor como null
             sabor = null;
+            System.out.println(e.getMessage());
         }
-        Moneda tempMoneda = exp.getVuelto();;
+        Moneda tempMoneda = exp.getVuelto();
         while (tempMoneda != null) {
             vuelto += tempMoneda.getValor();
             tempMoneda = exp.getVuelto();
         }
     }
-    
-    public int cuantoVuelto() { // de vuelto
+
+    public int cuantoVuelto() { // devuelve de vuelto del comprador
         return vuelto;
     }
-    //debemos registrar el sabor como propiedad si es que consiguio una
-    public String queBebiste() { //el sonido de la Bebida: cocacola, sprite, fanta
+
+    public String queBebiste() { // devuelve el sonido de la Bebida: cocacola, sprite, fanta
         return sabor;
     }
 }
-
-/* 
- * El retorno moneda con un void y solo asignando el valor
- * addVuelto 
- */
